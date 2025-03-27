@@ -13,7 +13,7 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /app
 COPY . .
-RUN tree
+RUN apt-get update && apt-get install -y tree && tree
 RUN dotnet restore "MediAPI.csproj"
 COPY . .
 WORKDIR "."

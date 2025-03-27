@@ -11,8 +11,7 @@ EXPOSE 8081
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-RUN pwd
-RUN ls -l
+RUN apt-get update && apt-get install -y tree && tree
 COPY ["MediAPI.csproj", "."]
 RUN dotnet restore "./MediAPI.csproj"
 COPY . .

@@ -25,5 +25,5 @@ RUN dotnet publish "MediAPI/MediAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publ
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN apt-get update && apt-get install -y tree && tree
+RUN tree
 ENTRYPOINT ["dotnet", "MediAPI"]

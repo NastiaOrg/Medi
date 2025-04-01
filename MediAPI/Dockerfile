@@ -26,4 +26,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 RUN ls 
+RUN ls -l
+RUN tree /app
 ENTRYPOINT ["dotnet", "MediAPI"]

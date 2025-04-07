@@ -28,5 +28,5 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 RUN ls 
 RUN ls -l
-RUN ls -l /workspace/
-ENTRYPOINT 
+
+ENTRYPOINT ["dotnet", "MediAPI/MediAPI.csproj"]

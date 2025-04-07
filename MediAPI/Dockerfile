@@ -19,6 +19,7 @@ RUN dotnet build "MediAPI/MediAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
+RUN docker tag mediapi us-central1-docker.pkg.dev/testproject-355010/medi-00001-fqp/mediapi:latest
 RUN dotnet publish "MediAPI/MediAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
